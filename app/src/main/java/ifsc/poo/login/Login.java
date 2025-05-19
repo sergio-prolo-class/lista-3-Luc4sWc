@@ -6,22 +6,22 @@ package ifsc.poo.login;
 import java.util.*;
 
 public class Login{
-    private static final Map<String,String> logins = new LinkedHashMap<>();
+    private static final Set<Usuario> usuarios = new LinkedHashSet<>();
 
     static void cadastrarLogin(String login, String senha){
-        logins.put(login,senha);
+        usuarios.add(new Usuario(login,senha));
     }
 
     static void removeLogin(String login){
-        logins.remove(login);
+        usuarios.removeIf(usuario -> usuario.getLogin().equals(login));
     }
 
     static void listarLogin(){
-        logins.forEach((login,senha) -> {System.out.println("LOGIN: " + login + " | " + "SENHA: " + senha);});
+        usuarios.forEach((usuario) -> {System.out.println("LOGIN: " + usuario.getLogin() + " | " + "SENHA: " + usuario.getSenha());});
     }
 
     static boolean autenticarLogin(String login, String senha){
-        return logins.entrySet().contains(Map.entry(login, senha));
+        return usuarios.contains(new Usuario(login,senha));
     }
 
     public static void main(String[] args) {
