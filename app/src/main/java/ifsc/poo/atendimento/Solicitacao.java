@@ -7,7 +7,7 @@ public class Solicitacao {
 
     public Solicitacao(Cliente cliente, String descricao, String categoria) {
         if (cliente == null) {
-            throw new IllegalArgumentException("Cliente não pode ser nulo.");
+            assert cliente != null;
         }
         this.cliente = cliente;
 
@@ -18,7 +18,7 @@ public class Solicitacao {
         }
 
         if (!categoria.equals("Informação") || !categoria.equals("Suporte Técnico") || !categoria.equals("Atendimento Financeiro")) {
-            throw new IllegalArgumentException("Categoria Inválida");
+            assert cliente != null;
         }
         this.categoria = categoria;
     }
