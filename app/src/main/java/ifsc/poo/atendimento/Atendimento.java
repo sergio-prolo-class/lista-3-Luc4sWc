@@ -63,4 +63,38 @@ public class Atendimento {
             System.out.printf("- %s: %.2f%%\n", cat, perc);
         });
     }
+
+    public static void main(String[] args) {
+        Atendimento atendimento = new Atendimento();
+
+        atendimento.registrarSolicitacao("Escambal","456-123-789","Tô com probema que não consigo colocar na rick Tv recor","Suporte Técnico");
+        atendimento.registrarSolicitacao("Zanildo","555-445-655","Não consigo sacar meu fgts","Atendimento Financeiro");
+        atendimento.registrarSolicitacao("Jacundes","523-513-987","Onde fica o banheiro?","Informação");
+        atendimento.registrarSolicitacao("Beltrana","975-153-456","Meu ex-namorado não quer pagar a pensão para o meu bebê reborn","Suporte Técnico");
+
+        atendimento.listarTelefonesClientes();
+
+        System.out.println("________________________________________________________________________________________________________________");
+
+        atendimento.atenderProximoCliente();
+
+        atendimento.listarClientesAtendidos();
+
+        System.out.println("________________________________________________________________________________________________________________");
+
+        atendimento.listarTelefonesEmEspera();
+
+        System.out.println("________________________________________________________________________________________________________________");
+
+        atendimento.imprimeProximoCliente();
+
+        System.out.println("________________________________________________________________________________________________________________");
+
+        atendimento.listarClientesAtendidos();
+
+        System.out.println("________________________________________________________________________________________________________________");
+
+        atendimento.gerarRelatorio();
+
+    }
 }
