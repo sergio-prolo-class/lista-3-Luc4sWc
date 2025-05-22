@@ -33,7 +33,6 @@ public class Sistema {
             return;
         }
         System.out.println("Livro não esta disponivel");
-        return;
     }
 
 

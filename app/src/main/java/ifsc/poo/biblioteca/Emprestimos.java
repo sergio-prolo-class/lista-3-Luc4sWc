@@ -6,6 +6,10 @@ public class Emprestimos {
     private String data;
 
     public Emprestimos(Leitores leitor, Livro livro, String data) {
+        if (leitor == null || livro == null || data == null){
+            System.out.println("Leitor/livro não encontrado");
+            return;
+        }
         this.leitor = leitor;
         this.livro = livro;
         this.data = data;
