@@ -69,7 +69,7 @@ public class Sistema {
 
     void listarAutores() {
         // ordena com base no compareTo
-        for (Autor a : autores) {
+        for (Autor a : autores) {// agora dá certo
             System.out.println(a.getNome());  // usa o toString()
         }
     }
