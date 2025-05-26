@@ -1,12 +1,14 @@
 package ifsc.poo.biblioteca;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Livro {
     private String titulo;
     private Integer isbn;
-    private List<Autor> autores = new ArrayList<>();
+    private Set<Autor> autores = new HashSet<>();
 
     public Livro(String titulo, Integer isbn) {
         this.titulo = titulo;
@@ -19,5 +21,7 @@ public class Livro {
 
     public Integer getIsbn() { return isbn; }
     public String getTitulo() { return titulo; }
-    public List<Autor> getAutores() { return autores; }
+    public Set<Autor> getAutores() {
+        return autores;
+    }
 }

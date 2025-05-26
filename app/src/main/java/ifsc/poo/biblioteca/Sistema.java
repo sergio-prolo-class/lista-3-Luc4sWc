@@ -5,7 +5,7 @@ import java.util.*;
 public class Sistema {
     private Map<Integer, Livro> livros = new HashMap<>();
     private Map<Integer, Leitores> leitores = new HashMap<>();
-    private List<Autor> autores = new ArrayList<>();
+    private Set<Autor> autores = new LinkedHashSet<>();
     private List<Emprestimos> Emprestimoss = new ArrayList<>();
     private Integer geradorDeId = 1;
     private Map<Integer,Integer> copiasDisponiveis = new HashMap();
@@ -16,9 +16,12 @@ public class Sistema {
         geradorDeId++;//id sempre único
     }
 
-    public void cadastrarLivro(String titulo, Integer isbn, int copias, List<Autor> autoresLivro) {
+    public void cadastrarLivro(String titulo, Integer isbn, int copias, Set<Autor> autoresLivro) {
         Livro livro = new Livro(titulo, isbn);
-        for (Autor autor : autoresLivro) livro.adicionarAutor(autor);
+        for (Autor autor : autoresLivro){
+            livro.adicionarAutor(autor);
+            autores.add(autor);
+        }
         livros.put(isbn, livro);
         copiasDisponiveis.put(isbn, copias);
     }
@@ -65,9 +68,9 @@ public class Sistema {
     }
 
     void listarAutores() {
-        Collections.sort(autores);  // ordena com base no compareTo
+        // ordena com base no compareTo
         for (Autor a : autores) {
-            System.out.println(a);  // usa o toString()
+            System.out.println(a.getNome());  // usa o toString()
         }
     }
 
@@ -141,9 +144,9 @@ public class Sistema {
         sistema.cadastrarLeitor("Rogério","Paraisopoles","422-643-541");
         sistema.cadastrarLeitor("Joana","CasaDaMãeJoana","242-455-625");
 
-        sistema.cadastrarLivro("Senhor Dos Anals", 111111,9, Arrays.asList(Tolkien,Machado));
-        sistema.cadastrarLivro("Dom Cascudo", 222222,4, Arrays.asList(Machado));
-        sistema.cadastrarLivro("A Hora da Estrela", 321654, 1, Arrays.asList(Clarice));
+        sistema.cadastrarLivro("Senhor Dos Anals", 111111,9, Set.of(Tolkien,Machado));
+        sistema.cadastrarLivro("Dom Cascudo", 222222,4, Set.of(Machado));
+        sistema.cadastrarLivro("A Hora da Estrela", 321654, 1, Set.of(Clarice));
 
         sistema.registrarEmprestimos(1,111111,"20/02/2025");
         sistema.registrarEmprestimos(1,111111,"20/02/2025");
@@ -163,7 +166,7 @@ public class Sistema {
         sistema.registrarEmprestimos(4,222222,"31/09/2025");
         sistema.registrarEmprestimos(5,222222,"20/10/2025");
 
-        sistema.cadastrarLivro("A Hora da Estrela", 321654, 1, Arrays.asList(Clarice));
+        sistema.cadastrarLivro("A Hora da Estrela", 321654, 1, Set.of(Clarice));
 
         sistema.registrarEmprestimos(5,321654,"05/11/2025");
         sistema.registrarEmprestimos(6,111111,"25/11/2025");
@@ -183,6 +186,8 @@ public class Sistema {
         System.out.println("-----------------------------------------------------------------------------");
 
         sistema.listarAutores();
+
+        System.out.println("-----------------------------------------------------------------------------");
 
         sistema.listarLeitores();
 
