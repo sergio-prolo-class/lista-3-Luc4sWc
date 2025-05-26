@@ -1,8 +1,8 @@
 package ifsc.poo.login;
 
 public class Usuario {
-    String login;
-    String senha;
+    private String login;
+    private String senha;
 
     void setLogin(String login){
         this.login = login;
